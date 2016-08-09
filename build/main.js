@@ -2,21 +2,13 @@
 
 var app = {
 	vars: {
-		url: 'https://www.reddit.com/r/videos.json',
-		num: 1,
-		num2: 2
+		url: 'https://www.reddit.com/r/videos.json'
 	},
 	init: function init() {
 		console.log('YOLOes2015');
 
 		app.checkVars();
 		var user = "getting data";
-
-		// template strings you have to use backticks
-		console.log(user + ' from ' + app.vars.url + ' ');
-
-		console.log(app.vars.num + ' + ' + app.vars.num2 + ' ');
-
 		app.getData(app.vars.url, function (data) {
 			app.processData(data);
 		});
@@ -38,8 +30,10 @@ var app = {
 		console.log(data);
 		var videoData = data.data.children;
 		console.log(videoData);
-		videoData.filter(function (c, p, i) {
-			console.log(c.data.domain, p);
+		videoData.filter(function (currentValue, p, i) {
+			if (currentValue.data.domain == 'youtube.com' || currentValue.data.domain == 'm.youtube.com' || currentValue.data.domain == 'youtu.be') {
+				console.log(currentValue.data.url);
+			}
 		});
 	},
 
