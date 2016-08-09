@@ -12,3 +12,7 @@ gulp.task('js', function() {
 gulp.task('es2015',function(){
 	gulp.watch('app/**/**.js', ['js']);
 })
+
+gulp.task('default', function(){
+	gulp.start('es2015');
+})
